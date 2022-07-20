@@ -1,0 +1,32 @@
+---
+# This is a typical configuration file for Glauber setup
+
+Monte Carlo : false
+
+Nucleus :
+  A : Au
+  B : Au
+
+b : { Min : 0. , Max : 20. }            # Same Min, Max for specific b
+
+sNN : { Value : 200 , Unit : GeV }      # Units : MeV, GeV, TeV
+
+Parameter :
+
+  f : 0.135
+  Npp : 2.1
+
+  # Additional parameters required for Glauber Monte Carlo
+  Monte Carlo :
+
+    Negative Binomial :
+      Flag : true
+      k : 1.1          # Variance of NBD
+
+    Gamma :
+      Flag : false
+      Tpp : 0.5        # Inverse of mean of Gamma
+
+Events : 10
+
+Status : 5             # Interval to return event generation info
