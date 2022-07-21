@@ -71,3 +71,18 @@ the output file
 ```shell
 h5dump -H /path/to/output
 ``` 
+
+### Parallel Run
+
+Large number of events can be generated using the
+the [parallel script](parallel) provided
+
+```shell
+./parallel --binary /path/to/Glauber --config /path/to/config.yaml --cores N --name Directory
+```
+
+This initiates N parallel event generation
+instances and saves the outputs in *Directory*
+(will be created) as `Glauber_i.h5` with `i` from
+1 to N. Use the optional `--input` to pass
+additional arguments to the binary.

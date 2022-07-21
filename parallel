@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Function to be parallelized
+function Job() {
+  dir=$1
+  cmd=$2
+  config=$3
+  shift 3
+  args=("$@")
+
+  cd $dir && ./$cmd $config ${args[@]}
+  cd ..
+}
+
+# Obtain command line options
+while [ -n "$1" ]
+do
+  case "$1" in
+    --binary)  binary="$2"
+               shift ;;
+    --config)  config="$2"
+               shift ;;
+    --cores)   num="$2"
+               shift ;;
+    --name)    name="$2"
+               shift ;;
+    --input)   while (( "$#" >= 2 )) && ! [[ $2 = --* ]]; do
+                input+=("$2")
+                shift
+               done
+  esac
+  shift
+done
+
+# Preparing directories for job submission
+for (( c=1; c<=$num; c++ ))
+do
+  if [ ! -d "$name"_$c ]
+  then
+    mkdir "$name"_$c
+  fi
+    
+  cp $binary "$name"_$c/bin_"$name"_$c
+  cp $config "$name"_$c/
+done
+
+# Parallelize simulations
+export -f Job
+seq $num | xargs -P 0 -I{} bash -c "Job '$name'_{} bin_'$name'_{} '$config' '${input[@]}'"
+echo ""
+
+# Create output directory
+if [ ! -d $name ]
+then
+  mkdir $name
+fi
+
+# Gather all files
+for (( i=1; i<=$num; i++ ))
+do
+  dir="$name"_"$i"
+
+  echo "Copying from $dir"
+  mv $dir/*_glauber_*.h5 $name/Glauber_"$i".h5
+  
+  echo "Removing $dir" && rm -r $dir
+done
