@@ -116,7 +116,7 @@ namespace EventGen{
     DataStream::MetaData InfoR(DataStream::Compound, {1}, "Position");
     InfoR.AddMember(&Position::x, "x", DataStream::Double);
     InfoR.AddMember(&Position::y, "y", DataStream::Double);
-    InfoR.AddMember(&Position::y, "z", DataStream::Double);
+    InfoR.AddMember(&Position::z, "z", DataStream::Double);
 
     DataStream::MetaData InfoN(DataStream::Compound, {Data.A}, "Nucleon");
     InfoN.AddMember(&Nucleon::Participant, "Participant", DataStream::Bool);
@@ -125,7 +125,7 @@ namespace EventGen{
 
     // Dataset
     Obj.Add(Path, Arr.data(), InfoN);
-    
+
     Obj.Configure(N);
   }
 
