@@ -34,7 +34,7 @@ namespace EventGen{
       GlauberMC(std::string A, std::string B) : Glauber(A, B){
         Name.str("");
         Name << "Monte Carlo Glauber, " << Na.Name << "-" << Na.Name;
-        
+
         FileName.str("");
         FileName << "mc_glauber_" << Na.Name << "_" << Na.Name << ".h5";
 
@@ -45,8 +45,7 @@ namespace EventGen{
         NucleusB.SetRandomGenerator(&Rng);
 
         // Initial estimate for Npart & Ncoll
-        int Len = 10*std::max(Na.A, Nb.A);
-        PartA.resize(Na.A), PartB.resize(Nb.A), Coll.resize(Len);
+        PartA.resize(Na.A), PartB.resize(Nb.A), Coll.resize(5000);
       }
 
       ~GlauberMC() = default;
@@ -54,7 +53,7 @@ namespace EventGen{
       // Operations
       void Configure(YAML::Node);
       bool GenerateEvent();
-      
+
       // Getter
       double GetTransverseProfile(Position);
 
