@@ -18,7 +18,9 @@ namespace EventGen{
     {"Pb", 207, 82, 6.62, 0.546, 0., 0., 0., KeyChargeProfile::Fermi},
     {"S", 32, 16, 2.54, 2.191, 0.16, 0., 0., KeyChargeProfile::Gaussian},
     {"Cu", 63, 29, 4.2, 0.596, 0.0, 0., 0., KeyChargeProfile::Fermi},
-    {"d", 2, 1, 0.01, 0.228, 0., 1.177, 0., KeyChargeProfile::Hulthen}
+    {"d", 2, 1, 0.01, 0.228, 0., 1.177, 0., KeyChargeProfile::Hulthen},
+    {"He", 4, 2, 0.964, 0.322, 0.517, 0., 0., KeyChargeProfile::Fermi},
+    {"O", 16, 8, 2.608, 0.513, -0.051, 0., 0., KeyChargeProfile::Fermi},
   };
 
 }

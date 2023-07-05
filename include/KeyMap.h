@@ -8,7 +8,7 @@ namespace EventGen{
   enum KeyChargeProfile{Fermi = 0, Deformed, Gaussian, Hulthen};
 
   // Nucleus
-  enum KeyNucleus{Au = 0, Au2, U, Pb, S, Cu, d};
+  enum KeyNucleus{Au = 0, Au2, U, Pb, S, Cu, d, He, O};
   static std::map<std::string, KeyNucleus> MapNucleus{
     {"Au", KeyNucleus::Au},
     {"Au2", KeyNucleus::Au2},
@@ -16,7 +16,9 @@ namespace EventGen{
     {"Pb", KeyNucleus::Pb},
     {"S", KeyNucleus::S},
     {"Cu", KeyNucleus::Cu},
-    {"d", KeyNucleus::d}
+    {"d", KeyNucleus::d},
+    {"He", KeyNucleus::He},
+    {"O", KeyNucleus::O}
   };
 
   // Energy units
