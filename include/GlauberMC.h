@@ -33,7 +33,7 @@ namespace EventGen{
 
       GlauberMC(std::string A, std::string B) : Glauber(A, B){
         Name.str("");
-        Name << "Monte Carlo Glauber, " << Na.Name << "-" << Na.Name;
+        Name << "Monte Carlo Glauber, " << Na.Name << "+" << Na.Name;
 
         FileName.str("");
         FileName << "mc_glauber_" << Na.Name << "_" << Na.Name << ".h5";

@@ -66,7 +66,7 @@ namespace EventGen{
         Na = ListNucleus[MapNucleus[A]];
         Nb = ListNucleus[MapNucleus[B]];
 
-        Name << "Optical Glauber, " << Na.Name << "-" << Na.Name;
+        Name << "Optical Glauber, " << Na.Name << "+" << Na.Name;
         FileName << "opt_glauber_" << Na.Name << "_" << Na.Name << ".h5";
 
         Fa.Initialize(Na);
@@ -83,12 +83,13 @@ namespace EventGen{
       void SetImpactRange(double Min, double Max){
         Bmin = Min, Bmax = Max;
       }
-      void SetCollisionEnergy(double SNN){ 
+      void SetCollisionEnergy(double SNN){
         sNN = SNN;
-        SgNN = CrossSection(sNN); 
+        SgNN = CrossSection(sNN);
+        Name << " at ECoM = " << sNN << " GeV";
       }
-      
-      // Operations      
+
+      // Operations
       virtual void Configure(YAML::Node);
       virtual bool GenerateEvent();
 
